@@ -27,4 +27,5 @@ In the interst of reproducibility, many automated 'pipelines' or 'workflows' for
 * bcbio-nextgen
 * snakemake
 * nextflow
+
 However, while these are often used by large sequencing cores, bash/python scripts still remain widely used by individual bioinformaticians.
