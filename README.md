@@ -1,6 +1,7 @@
 # DNA-seq
 
-My collection of resources for DNA-seq analysis. I needed a place to compile and organise all my notes - so here it is!
+:notebook: My notes for DNA-seq analysis. :+1: 
+
 
 ### 
 
@@ -18,6 +19,16 @@ The following are the main steps in the variant calling pipeline.
 
 <img src="https://software.broadinstitute.org/gatk/img/BP_workflow_3.6.png" width="564" height="306"/>
 
+
+2) Mark Duplicates
+3) Recalibrate Bases
+4) Call variants
+   - Joint Genotype
+
+5) Filter variants
+   - Variant Quality Score Recalibration (VQSR)
+
+   Calculaties a new well-calibrated quality score (the VQSLOD value) using "machine learning algorithms to learn from each dataset what is the annotation profile of good variants vs. bad variants". Uses a training dataset of known variants (e.g. hapmap, 1000G) to learn how to recognise good variants. It's a two step process: VariantRecalibrator followed by ApplyRecalibration. May not be able to use with small sequencing experiments - "This tool is expecting thousands of variant sites in order to achieve decent modeling with the Gaussian mixture model."
 
 ### File Formats
 
