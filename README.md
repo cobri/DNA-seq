@@ -22,13 +22,17 @@ The following are the main steps in the variant calling pipeline.
 
 2) Mark Duplicates
 3) Recalibrate Bases
+   - Base Quality Score Recalibration (BSQR)
+   
+   "Detects systematic errors made by the sequencer when it estimates the quality score of each base call."  A machine learning method to adjust qulaity scores. It "builds a model of covariation based on the data and a set of known variants, then it adjusts the base quality scores in the data based on the model". *Datasets to use: dbSNP (>132), Mills indels, and 1KG indels.*
+   
 4) Call variants
    - Joint Genotype
 
 5) Filter variants
    - Variant Quality Score Recalibration (VQSR)
 
-   Calculaties a new well-calibrated quality score (the VQSLOD value) using "machine learning algorithms to learn from each dataset what is the annotation profile of good variants vs. bad variants". Uses a training dataset of known variants (e.g. hapmap, 1000G) to learn how to recognise good variants. It's a two step process: VariantRecalibrator followed by ApplyRecalibration. May not be able to use with small sequencing experiments - "This tool is expecting thousands of variant sites in order to achieve decent modeling with the Gaussian mixture model."
+   Calculates a new well-calibrated quality score (the VQSLOD value) using "machine learning algorithms to learn from each dataset what is the annotation profile of good variants vs. bad variants". Uses a training dataset of known variants (e.g. hapmap, 1000G) to learn how to recognise good variants. It's a two step process: VariantRecalibrator followed by ApplyRecalibration. May not be able to use with small sequencing experiments - "This tool is expecting thousands of variant sites in order to achieve decent modeling with the Gaussian mixture model." *Datasets to use: dbSNP (>132) and Mills indels.*
 
 ### File Formats
 
