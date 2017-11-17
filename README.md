@@ -34,17 +34,18 @@ The following are the main steps in the variant calling pipeline.
 
    Calculates a new well-calibrated quality score (the VQSLOD value) using "machine learning algorithms to learn from each dataset what is the annotation profile of good variants vs. bad variants". Uses a training dataset of known variants (e.g. hapmap, 1000G) to learn how to recognise good variants. It's a two step process: VariantRecalibrator followed by ApplyRecalibration. May not be able to use with small sequencing experiments - "This tool is expecting thousands of variant sites in order to achieve decent modeling with the Gaussian mixture model." *Datasets to use: dbSNP (>132) and Mills indels.* 
    
-   Alternatively if you have a small data-set you can use hard filtering. Suggested parmaters are discussed [here](https://software.broadinstitute.org/gatk/documentation/article.php?id=3225).
+   Alternatively, if you have a small data-set you can use hard filtering. Suggested parmaters are discussed [here](https://software.broadinstitute.org/gatk/documentation/article.php?id=3225).
    
    
 6) Callset refinement
 
-"The goal of the Genotype Refinement workflow is to use additional data to improve the accuracy of genotype calls and to filter genotype calls that are not reliable enough for downstream analysis." (Optional, according to GATK.)
+   "The goal of the Genotype Refinement workflow is to use additional data to improve the accuracy of genotype calls and to filter genotype calls that are not reliable enough for downstream analysis." (Optional, according to GATK.)
 
    
 
 7) Annotate variants
-After filtering your variants, you now want to prioritise the ones most likely to be functional and relevant to your disease. Here is a great review paper: [A practical guide to filtering and prioritizing genetic variants](https://www.biotechniques.com/BiotechniquesJournal/2017/January/A-practical-guide-to-filtering-and-prioritizing-genetic-variants/biotechniques-365454.html?pageNum=1)
+
+   After filtering your variants, you now want to prioritise the ones most likely to be functional and relevant to your disease. Here is a great review paper: [A practical guide to filtering and prioritizing genetic variants](https://www.biotechniques.com/BiotechniquesJournal/2017/January/A-practical-guide-to-filtering-and-prioritizing-genetic-variants/biotechniques-365454.html?pageNum=1)
 
    The most widely used tools are curently: SnpEff, ANNOVAR, and VEP.
 
