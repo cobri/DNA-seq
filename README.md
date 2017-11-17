@@ -14,7 +14,7 @@ The following are the main steps in the variant calling pipeline.
 4) Call variants
 5) Filter variants
 6) Callset refinement 
-6) Annotate variants
+7) Annotate variants
 
 
 <img src="https://software.broadinstitute.org/gatk/img/BP_workflow_3.6.png" width="564" height="306"/>
@@ -30,11 +30,16 @@ The following are the main steps in the variant calling pipeline.
    - Joint Genotype
 
 5) Filter variants
+6) Callset refinement
    - Variant Quality Score Recalibration (VQSR)
 
    Calculates a new well-calibrated quality score (the VQSLOD value) using "machine learning algorithms to learn from each dataset what is the annotation profile of good variants vs. bad variants". Uses a training dataset of known variants (e.g. hapmap, 1000G) to learn how to recognise good variants. It's a two step process: VariantRecalibrator followed by ApplyRecalibration. May not be able to use with small sequencing experiments - "This tool is expecting thousands of variant sites in order to achieve decent modeling with the Gaussian mixture model." *Datasets to use: dbSNP (>132) and Mills indels.*
    
-6) After filtering your variants, you now want to prioritise the ones most likely to be functional and relevant to your disease. Here is a great review paper: [A practical guide to filtering and prioritizing genetic variants](https://www.biotechniques.com/BiotechniquesJournal/2017/January/A-practical-guide-to-filtering-and-prioritizing-genetic-variants/biotechniques-365454.html?pageNum=1)
+
+7) Annotate variants
+After filtering your variants, you now want to prioritise the ones most likely to be functional and relevant to your disease. Here is a great review paper: [A practical guide to filtering and prioritizing genetic variants](https://www.biotechniques.com/BiotechniquesJournal/2017/January/A-practical-guide-to-filtering-and-prioritizing-genetic-variants/biotechniques-365454.html?pageNum=1)
+
+   The most widely used tools are curently: SnpEff, ANNOVAR, and VEP.
 
 ### File Formats
 
