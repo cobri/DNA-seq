@@ -66,7 +66,12 @@ The header line names the 8 fixed, mandatory columns. There are often many more 
 7. FILTER - 'PASS' if the variant passed all filters. '.' if no filtering has been applied. Otherwise, a semicolon-separated list of codes for filters that fail.
 8. INFO - Additional information, represented as ID=VALUE. The exact format of each INFO sub-field should be specified in the header.
 9. FORMAT - Sample-level annotations. Colon-separated data in this field corresponds to the types specified in the format. The first sub-field must always be the genotype (GT) if it is present. There are several common standard keywords:
-    * GT : genotype, encoded as allele values separated by either of / or |. The allele values are 0 for the reference allele (what is in the REF field), 1 for the first allele listed in ALT, 2 for the second allele list in ALT and so on. 
+    * GT : Genotype. 
+      - 0/0 - homozygous reference
+      - 0/1 - heterozygous
+      - 1/2 - heterozygous for the two ALT allelles
+      - 1/1 - homozygous first ALT
+      - 2/2 - homozygous second ALT
     * DP : read depth at this position for this sample
     * FT : sample genotype filter indicating if this genotype was “called”
     * GL : genotype likelihoods comprised of comma separated floating point log10-scaled likelihoods for all possible genotypes given the set of alleles defined in the REF and ALT fields.
