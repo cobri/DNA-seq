@@ -21,11 +21,11 @@ The following are the main steps in the variant calling pipeline.
 
 1) Alignment
 
-   Align fastq files to referemce genome. Convert to BAM format and sort.
+   Align fastq files to reference genome. Convert to BAM format and sort.
 
 2) Mark Duplicates
 
-   Mark duplicate fragments or remove them altogether. This process identifyies read pairs that are likely to have originated from duplicates of the same original DNA fragments through some artifactual processes (e.g. PCR duplicates). They are considered to be non-independent observations so they will be ignored in downstream analyses. 
+   Mark duplicate fragments or remove them altogether. This process identifies read pairs that are likely to have originated from duplicates of the same original DNA fragments through some artifactual processes (e.g. PCR duplicates). They are considered to be non-independent observations so they will be ignored in downstream analyses. 
    
 3) Recalibrate Bases
 
@@ -33,7 +33,7 @@ The following are the main steps in the variant calling pipeline.
    
 4) Call variants
 
-   Firstly, run the `HaplotypeCaller` tool on individual BAM files. This will produce genotype likelihood information for each sample for each locus. The output from this step will be the intermediate individual-sample files `*.g.vcf` which you will then use to perform Joint variant calling with the `GenotypeGVCFs` tool. This will call variants jointly on all your samples.
+   GATK calls variants via "local de-novo assembly of haplotypes in an active region". Firstly, run the `HaplotypeCaller` tool on individual BAM files. This will produce genotype likelihood information for each sample for each locus. The output from this step will be the intermediate individual-sample files `*.g.vcf` which you will then use to perform Joint variant calling with the `GenotypeGVCFs` tool. This will call variants jointly on all your samples.
    
 5) Filter variants
    - Variant Quality Score Recalibration (VQSR)
