@@ -29,7 +29,9 @@ The following are the main steps in the variant calling pipeline.
    
 3) Recalibrate Bases
 
-   Base Quality Score Recalibration (BSQR) is a machine learning method to adjust base quality scores, which are confidence scores emitted by the sequencer for each base. It detects and corrects for systematic errors made by the sequencer when it estimates the quality score of each base call. It "builds a model of covariation based on the data and a set of known variants, then it adjusts the base quality scores in the data based on the model". *Datasets to use: dbSNP (>132), Mills indels, and 1KG indels.*
+   Base Quality Score Recalibration (BSQR) is a machine learning method to adjust base quality scores, which are confidence scores emitted by the sequencer for each base. It detects and corrects for systematic errors made by the sequencer when it estimates the quality score of each base call. It "builds a model of covariation based on the data and a set of known variants, then it adjusts the base quality scores in the data based on the model". 
+   
+   Useful article on what known variant datsets to use [here](https://software.broadinstitute.org/gatk/documentation/article.php?id=1247). *Datasets to use: dbSNP (>132), Mills indels, and 1KG indels.* 
    
 4) Call variants
 
