@@ -10,7 +10,7 @@ The following are the main steps in the variant calling pipeline.
 
 1) Alignment
 2) Mark/Remove Duplicates
-3) Local Re-alignment/Base Recalibration
+3) Recalibrate Bases
 4) Call variants
 5) Filter variants
 6) Callset refinement 
@@ -23,13 +23,13 @@ The following are the main steps in the variant calling pipeline.
 
    Align fastq files to reference genome. Convert to BAM format and sort.
 
-2) Mark Duplicates
+2) Mark/Remove Duplicates
 
    Mark duplicate fragments or remove them altogether. This process identifies read pairs that are likely to have originated from duplicates of the same original DNA fragments through some artifactual processes (e.g. PCR duplicates). They are considered to be non-independent observations so they will be ignored in downstream analyses. 
    
 3) Recalibrate Bases
 
-   Base Quality Score Recalibration (BSQR) is a machine learning method to adjust base quality scores, which are confidence scores emitted by the sequencer for each base. It detects and corrects for systematic errors made by the sequencer when it estimates the quality score of each base call. It "builds a model of covariation based on the data and a set of known variants, then it adjusts the base quality scores in the data based on the model". "The base recalibration process involves two key steps: first the program builds a model of covariation based on the data and a set of known variants, then it adjusts the base quality scores in the data based on the model." Firstly, use the `BaseRecalibrator` tool to generate a first pass recalibration table file. Repeat this step using the first pass recalibration table file as input and generate a second pass recalibration table. Lastly, use the optional (but recommended) `AnalyzeCovariates` tool to plot before (first pass) and after (second pass) recalibration tables to compare them, so that you can visualize the effects of the recalibration process. 
+   Base Quality Score Recalibration (BSQR) is a machine learning method to adjust base quality scores, which are confidence scores emitted by the sequencer for each base. It detects and corrects for systematic errors made by the sequencer when it estimates the quality score of each base call. It "builds a model of covariation based on the data and a set of known variants, then it adjusts the base quality scores in the data based on the model". Firstly, use the `BaseRecalibrator` tool to generate a first pass recalibration table file. Repeat this step using the first pass recalibration table file as input and generate a second pass recalibration table. Lastly, use the optional (but recommended) `AnalyzeCovariates` tool to plot before (first pass) and after (second pass) recalibration tables to compare them, so that you can visualize the effects of the recalibration process. 
    
    Useful article on what known variant datsets to use [here](https://software.broadinstitute.org/gatk/documentation/article.php?id=1247). *Datasets to use: dbSNP (>132), Mills indels, and 1KG indels.* 
    
